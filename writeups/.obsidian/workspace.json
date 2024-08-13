@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "THM/dreaming/README.md.md",
+                "file": "THM/Agent T/README.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "47b3a696e6a0ec72",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "THM/dreaming/README.md.md",
+                "file": "THM/Agent T/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "THM/dreaming/README.md.md",
+                "file": "THM/Agent T/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "THM/dreaming/README.md.md"
+                "file": "THM/Agent T/README.md"
               }
             }
           }
@@ -148,8 +148,22 @@
   },
   "active": "c8b25da3dd989c85",
   "lastOpenFiles": [
+    "THM/Agent T/flag.txt",
+    "THM/Sudo Security Bypass/README.md",
+    "THM/Agent T/README.md",
+    "THM/Agent T",
+    "THM/Sudo Security Bypass/root.txt",
+    "THM/Sudo Security Bypass/root.txt.md",
+    "THM/Dreaming/death_flag.md",
+    "THM/Sudo Security Bypass",
+    "THM/Dreaming/README.md",
+    "THM/Dreaming/lucien_flag.md",
+    "THM/Dreaming/morpheus_flag.md",
+    "THM/Sudo Buffer Overflow/root.md",
+    "THM/Sudo Buffer Overflow/README.md",
+    "THM/Sudo Buffer Overflow",
     "THM/dreaming/README.md.md",
-    "THM/dreaming",
+    "THM/Dreaming",
     "THM"
   ]
 }
