@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "THM/Wreath/Task 11.md",
+                "file": "Notes/SMB.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "47b3a696e6a0ec72",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "THM/Wreath/Task 11.md",
+                "file": "Notes/SMB.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "THM/Wreath/Task 11.md",
+                "file": "Notes/SMB.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "THM/Wreath/Task 11.md"
+                "file": "Notes/SMB.md"
               }
             }
           }
@@ -148,18 +149,24 @@
   },
   "active": "15cd35fd8be7a949",
   "lastOpenFiles": [
-    "THM/Wreath/Task 10.md",
-    "THM/Wreath/Task 11.md",
+    "Notes/Domain Resolution - Dig.md",
+    "Notes/SMB.md",
+    "Notes/The TCP-IP Model.md",
+    "Notes/Encapsulation (Network - OSI).md",
+    "Notes/The OSI Model.md",
     "THM/Wreath/Notes.md",
+    "Notes",
+    "THM/Wreath/Task 11.md",
+    "THM/Wreath/Task 6.md",
+    "THM/Wreath/Task 5.md",
+    "THM/Wreath/Task 8.md",
+    "THM/Wreath/2.png",
+    "THM/Wreath/Task 10.md",
     "THM/Wreath/Pasted image 20240814205003.png",
     "THM/Wreath/Task 9.md",
     "THM/Wreath/Pasted image 20240814184140.png",
-    "THM/Wreath/Task 8.md",
     "THM/Wreath/Task 7.md",
-    "THM/Wreath/Task 6.md",
-    "THM/Wreath/2.png",
     "THM/Wreath/1.png",
-    "THM/Wreath/Task 5.md",
     "THM/Wreath",
     "THM/Wgel CTF/README.md",
     "THM/Wgel CTF/root_flag.txt",
@@ -174,7 +181,6 @@
     "THM/Agent T/flag.txt",
     "THM/Sudo Security Bypass/README.md",
     "THM/Agent T",
-    "THM/Sudo Security Bypass/root.txt",
     "THM/Sudo Security Bypass/root.txt.md",
     "THM/Dreaming/death_flag.md",
     "THM/Dreaming/README.md",
