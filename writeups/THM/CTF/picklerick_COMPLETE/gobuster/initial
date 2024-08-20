@@ -1,0 +1,43 @@
+gobuster dir -u http://10.10.165.128/  -w /usr/share/dirb/wordlists/common.txt -x .php,.html,.sh
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.165.128/
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/dirb/wordlists/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Extensions:              php,html,sh
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/.php                 (Status: 403) [Size: 278]
+/.html                (Status: 403) [Size: 278]
+/.hta                 (Status: 403) [Size: 278]
+/.hta.php             (Status: 403) [Size: 278]
+/.hta.html            (Status: 403) [Size: 278]
+/.htaccess            (Status: 403) [Size: 278]
+/.htaccess.sh         (Status: 403) [Size: 278]
+/.htaccess.php        (Status: 403) [Size: 278]
+/.hta.sh              (Status: 403) [Size: 278]
+/.htaccess.html       (Status: 403) [Size: 278]
+/.htpasswd.php        (Status: 403) [Size: 278]
+/.htpasswd.sh         (Status: 403) [Size: 278]
+/.htpasswd            (Status: 403) [Size: 278]
+/.htpasswd.html       (Status: 403) [Size: 278]
+/assets               (Status: 301) [Size: 315] [--> http://10.10.165.128/assets/]
+/denied.php           (Status: 302) [Size: 0] [--> /login.php]
+/index.html           (Status: 200) [Size: 1062]
+/index.html           (Status: 200) [Size: 1062]
+/login.php            (Status: 200) [Size: 882]
+/portal.php           (Status: 302) [Size: 0] [--> /login.php]
+/robots.txt           (Status: 200) [Size: 17]
+/server-status        (Status: 403) [Size: 278]
+Progress: 18456 / 18460 (99.98%)
+===============================================================
+Finished
+===============================================================
+

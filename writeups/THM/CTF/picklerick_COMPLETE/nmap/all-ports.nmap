@@ -1,0 +1,9 @@
+# Nmap 7.94SVN scan initiated Tue Jul 30 04:06:46 2024 as: nmap -p- -oA nmap/all-ports 10.10.22.5
+Nmap scan report for 10.10.22.5
+Host is up (0.17s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+
+# Nmap done at Tue Jul 30 04:22:27 2024 -- 1 IP address (1 host up) scanned in 940.81 seconds

@@ -1,0 +1,24 @@
+# Nmap 7.94SVN scan initiated Tue Jul 30 04:19:09 2024 as: nmap -sC -sV -p 22,80 -vv -oA nmap/port-22-80 10.10.22.5
+Nmap scan report for 10.10.22.5
+Host is up, received echo-reply ttl 63 (0.17s latency).
+Scanned at 2024-07-30 04:19:10 UTC for 14s
+
+PORT   STATE SERVICE REASON         VERSION
+22/tcp open  ssh     syn-ack ttl 63 OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 f9:66:7b:ce:13:28:c0:b9:55:0e:8a:67:ab:57:f6:90 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJRxgXnxo1Nqmt6v9LvRrfNUbF6kvxAf/whUTRCbUgGN8f5ZcyUrykP0PP3JNQfrBs8OoCGRWsiUCTE7EGDyJbjJszmixzWWcj7qgXipYHJqJt5QWxrcISFu4mwHfqKaNFW73rc01JXz6JrOnOqzZlz7/Q12Ofv+L+tsX5sci5iau1ku73DO+7XnXaFq2zyy+vyKFEd12Xf8Ouw76ipVtZI3Xi5STin3MaVMDqeB6mGmhH44IsnthtxTbeYtPuG1rTdfsmFIuh23SOZYv6WyySEhsOFpLupNNwlSKHZg36x8LeUjpu7GkzDX/8Kt2qbBTX4P9B2kJm4rSFFgavwKCWqbRVoYngtTrdPUYkibqyn36QQvh2xnLssurAVsbc4Y/lrg4SZIc9Gdmsc0JDAkDjwGsDhHLLE2pKBt5mbAAByS6PqqusHPsXor5RYTvah9aGw7Spb/jqcM/XiJwr0dzcp2ViPBoazHWjnbYlatiQ71bYDtOzh7GGZB5mbQ5JB3s=
+|   256 01:37:5d:a0:89:30:e5:2d:fb:83:35:b4:ec:5e:6c:9c (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAsHJEFUgJQLKehg3CPu+zi/zf8paTKoUNfPyvkhRv6P6Rhk8mR4iKYI1G9BRokdWWU5Fcn9Aht+xQWdEai1KXs=
+|   256 37:e1:89:e4:ed:3f:35:a5:3c:19:3a:81:5e:cc:07:45 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILRAexGrPj3/JBnQVusGWUwW4AIo9WSLE1RBtNN2KBLT
+80/tcp open  http    syn-ack ttl 63 Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Rick is sup4r cool
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+| http-methods: 
+|_  Supported Methods: OPTIONS HEAD GET POST
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Jul 30 04:19:24 2024 -- 1 IP address (1 host up) scanned in 14.21 seconds
