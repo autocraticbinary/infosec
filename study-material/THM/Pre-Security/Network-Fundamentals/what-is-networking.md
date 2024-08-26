@@ -73,4 +73,16 @@
 
     - However, an interesting thing with MAC addresses is that they can be faked or "spoofed" in a process known as spoofing. This spoofing occurs when a networked device pretends to identify as another using its MAC address. When this occurs, it can often break poorly implemented security designs that assume that devices talking on a network are trustworthy. Take the following scenario: A firewall is configured to allow any communication going to and from the MAC address of the administrator. If a device were to pretend or "spoof" this MAC address, the firewall would now think that it is receiving communication from the administrator when it isn't.
 
+---
 
+### Ping (ICMP)
+
+> Ping
+
+    - Ping is one of the most fundamental network tools.
+    - Ping uses ICMP (Internet Control Message Protocol) packets to determine the performance of a connection between devices, for example, if the connection exists or is reliable.
+    - The time taken for ICMP packets travelling between devices is measured by ping, such as in the screenshot below. This measuring is done using ICMP's echo packet and then ICMP's echo reply from the target device.
+
+![ping](https://assets.tryhackme.com/additional/networking-fundamentals/intro-to-networking/ping/ping1.png)
+
+    - Pings can be performed against devices on a network, such as your home network or resources like websites.
