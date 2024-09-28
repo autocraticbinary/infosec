@@ -1,0 +1,818 @@
+PS C:\Users\sql_svc\Downloads> .\winPEAS.ps1
+.\winPEAS.ps1
+,/*,..*(((((((((((((((((((((((((((((((((,
+,*/((((((((((((((((((/,  .*//((//**, .*((((((*
+((((((((((((((((* *****,,,\########## .(* ,((((((
+(((((((((((/*******************####### .(. ((((((
+(((((((/******************/@@@@@/***\#######\((((((
+,,..**********************/@@@@@@@@@/***,#####.\/(((((
+, ,**********************/@@@@@+@@@/*********##((/ /((((
+..(((##########*********/#@@@@@@@@@/*************,,..((((
+.(((################(/******/@@@@@/****************.. /((
+.((########################(/************************..*(
+.((#############################(/********************.,(
+.((##################################(/***************..(
+.((######################################(/***********..(
+.((######(,.***.,(###################(..***(/*********..(
+.((######*(####((###################((######/(********..(
+.((##################(/**********(################(**...(
+.(((####################/*******(###################.((((
+.(((((############################################/  /((
+..(((((#########################################(..(((((.
+....(((((#####################################( .((((((.
+......(((((#################################( .(((((((.
+(((((((((. ,(############################(../(((((((((.
+  (((((((((/,  ,####################(/..((((((((((.
+        (((((((((/,.  ,*//////*,. ./(((((((((((.
+           (((((((((((((((((((((((((((/
+          by PEASS-ng & RandolphConley
+ADVISORY: WinPEAS - Windows local Privilege Escalation Awesome Script
+WinPEAS should be used for authorized penetration testing and/or educational purposes only
+Any misuse of this software will not be the responsibility of the author or of any other collaborator
+Use it at your own networks and/or with the network owner's explicit permission
+Indicates special privilege over an object or misconfiguration
+Indicates protection is enabled or something is well configured
+Indicates active users
+Indicates disabled users
+Indicates links
+Indicates title
+You can find a Windows local PE Checklist here: https://book.hacktricks.xyz/windows-hardening/checklist-windows-privilege-escalation
+
+====================================||SYSTEM INFORMATION ||====================================
+The following information is curated. To get a full list of system information, run the cmdlet get-computerinfo
+
+Host Name:                 ARCHETYPE
+OS Name:                   Microsoft Windows Server 2019 Standard
+OS Version:                10.0.17763 N/A Build 17763
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Standalone Server
+OS Build Type:             Multiprocessor Free
+Registered Owner:          Windows User
+Registered Organization:
+Product ID:                00429-00521-62775-AA442
+Original Install Date:     1/19/2020, 10:39:36 PM
+System Boot Time:          9/28/2024, 4:14:55 AM
+System Manufacturer:       VMware, Inc.
+System Model:              VMware7,1
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: AMD64 Family 25 Model 1 Stepping 1 AuthenticAMD ~2445 Mhz
+BIOS Version:              VMware, Inc. VMW71.00V.23553139.B64.2403260936, 3/26/2024
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume3
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC-08:00) Pacific Time (US & Canada)
+Total Physical Memory:     2,047 MB
+Available Physical Memory: 1,166 MB
+Virtual Memory: Max Size:  2,431 MB
+Virtual Memory: Available: 1,442 MB
+Virtual Memory: In Use:    989 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    WORKGROUP
+Logon Server:              N/A
+Hotfix(s):                 3 Hotfix(s) Installed.
+                           [01]: KB5004335
+                           [02]: KB5003711
+                           [03]: KB5004244
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: vmxnet3 Ethernet Adapter
+                                 Connection Name: Ethernet0 2
+                                 DHCP Enabled:    Yes
+                                 DHCP Server:     10.129.0.1
+                                 IP address(es)
+                                 [01]: 10.129.250.121
+                                 [02]: fe80::3045:162e:3468:dee6
+                                 [03]: dead:beef::3045:162e:3468:dee6
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.
+
+=========|| WINDOWS HOTFIXES
+=| Check if windows is vulnerable with Watson https://github.com/rasta-mouse/Watson
+Possible exploits (https://github.com/codingo/OSCP-2/blob/master/Windows/WinPrivCheck.bat)
+
+HotfixID  Description     InstalledBy             InstalledOn
+--------  -----------     -----------             -----------
+KB5004244 Security Update NT AUTHORITY\SYSTEM     7/27/2021 12:00:00 AM
+KB5004335 Update          ARCHETYPE\Administrator 7/27/2021 12:00:00 AM
+KB5003711 Security Update NT AUTHORITY\SYSTEM     7/26/2021 12:00:00 AM
+
+
+
+=========|| ALL UPDATES INSTALLED
+Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED))
+At C:\Users\sql_svc\Downloads\winPEAS.ps1:547 char:1
++ $history = $session.QueryHistory("", 0, 1000) | Select-Object ResultC ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], UnauthorizedAccessException
+    + FullyQualifiedErrorId : System.UnauthorizedAccessException
+
+
+=========|| Drive Info
+Drive: C:
+Label:
+Size: 19.29 GB
+Free Space: 9.99 GB
+
+
+=========|| Antivirus Detection (attemping to read exclusions as well)
+ERROR:
+Description = Invalid namespace
+
+
+=========|| NET ACCOUNTS Info
+Force user logoff how long after time expires?:       Never
+Minimum password age (days):                          0
+Maximum password age (days):                          42
+Minimum password length:                              0
+Length of password history maintained:                None
+Lockout threshold:                                    Never
+Lockout duration (minutes):                           30
+Lockout observation window (minutes):                 30
+Computer role:                                        SERVER
+The command completed successfully.
+
+
+=========|| REGISTRY SETTINGS CHECK
+
+=========|| Audit Log Settings
+No Audit Log settings, no registry entry found.
+
+=========|| Windows Event Forward (WEF) registry
+Logs are not being fowarded, no registry entry found.
+
+=========|| LAPS Check
+LAPS dlls not found on this machine
+
+=========|| WDigest Check
+The system was unable to find the specified registry value: UesLogonCredential
+
+=========|| LSA Protection Check
+
+=========|| Credential Guard Check
+
+=========|| Cached WinLogon Credentials Check
+However, only the SYSTEM user can view the credentials here: HKEY_LOCAL_MACHINE\SECURITY\Cache
+Or, using mimikatz lsadump::cache
+
+=========|| Additonal Winlogon Credentials Check
+
+=========|| RDCMan Settings Check
+No RCDMan.Settings found.
+
+=========|| RDP Saved Connections Check
+HK_Users
+Not found for HKEY_USERS\.DEFAULT
+Not found for HKEY_USERS\S-1-5-21-1479773013-2644727484-962428355-1001
+Not found for HKEY_USERS\S-1-5-21-1479773013-2644727484-962428355-1001_Classes
+Not found for HKEY_USERS\S-1-5-18
+HKCU
+Terminal Server Client not found in HCKU
+
+=========|| Putty Stored Credentials Check
+No putty credentials found in HKCU:\SOFTWARE\SimonTatham\PuTTY\Sessions
+
+=========|| SSH Key Checks
+
+=========|| If found:
+https://blog.ropnop.com/extracting-ssh-private-keys-from-windows-10-ssh-agent/
+
+=========|| Checking Putty SSH KNOWN HOSTS
+No putty ssh keys found
+
+=========|| Checking for OpenSSH Keys
+No OpenSSH Keys found.
+
+=========|| Checking for WinVNC Passwords
+No WinVNC found.
+
+=========|| Checking for SNMP Passwords
+No SNMP found.
+
+=========|| Checking for TightVNC Passwords
+No TightVNC found.
+
+=========|| UAC Settings
+EnableLUA is equal to 1. Part or all of the UAC components are on.
+https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#basic-uac-bypass-full-file-system-access
+
+=========|| Recently Run Commands (WIN+R)
+
+=========||HKCU Recently Run Commands
+
+=========|| Always Install Elevated Check
+Checking Windows Installer Registry (will populate if the key exists)
+
+=========|| PowerShell Info
+PowerShell 2.0 available
+PowerShell 5.1.17763.1 available
+
+=========|| PowerShell Registry Transcript Check
+
+=========|| PowerShell Module Log Check
+
+=========|| PowerShell Script Block Log Check
+
+=========|| WSUS check for http and UseWAServer = 1, if true, might be vulnerable to exploit
+https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#wsus
+
+    Hive: HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions
+
+
+Name           Property
+----           --------
+Extensions
+IpAddresses
+Paths
+Processes
+TemporaryPaths
+The system was unable to find the specified registry value: RunAsPPL / RunAsPPLBoot
+The system was unable to find the specified registry value: LsaCfgFlags
+10
+
+
+
+CurrentLocation :
+Name            : HKU
+Provider        : Microsoft.PowerShell.Core\Registry
+Root            : HKEY_USERS
+Description     :
+MaximumSize     :
+Credential      : System.Management.Automation.PSCredential
+DisplayRoot     :
+Used            :
+Free            :
+
+
+
+=========|| Internet Settings HKCU / HKLM
+DisableCachingOfSSLPages - 0
+IE5_UA_Backup_Flag - 5.0
+PrivacyAdvanced - 1
+SecureProtocols - 2688
+User Agent - Mozilla/4.0 (compatible; MSIE 8.0; Win32)
+CertificateRevocation - 1
+ZonesSecurityUpgrade - 50 37 113 191 145 207 213 1
+EnableNegotiate - 1
+ProxyEnable - 0
+EnablePunycode - 1
+
+=========|| RUNNING PROCESSES
+
+=========|| Checking user permissions on running processes
+ARCHETYPE\sql_svc has ownership of C:\Users\sql_svc\Downloads\nc64.exe
+Identity ARCHETYPE\sql_svc has 'FullControl' perms for C:\Users\sql_svc\Downloads\nc64.exe
+
+=========|| System processes
+
+Image Name                     PID Session Name        Session#    Mem Usage Status          User Name                                              CPU Time Window Title                     
+========================= ======== ================ =========== ============ =============== ================================================== ============ ========================================================================
+System Idle Process              0                            0          8 K Unknown         NT AUTHORITY\SYSTEM                                     2:31:54 N/A                              
+
+=========|| SERVICE path vulnerable check
+Checking for vulnerable service .exe
+
+=========|| Checking for Unquoted Service Paths
+Fetching the list of services, this may take a while...
+No unquoted service paths were found
+
+=========|| Checking Service Registry Permissions
+This will take some time.
+
+=========|| SCHEDULED TASKS vulnerable check
+
+=========|| Testing access to c:\windows\system32\tasks
+No admin access to scheduled tasks folder.
+
+=========|| STARTUP APPLICATIONS Vulnerable Check
+https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#run-at-startup
+ARCHETYPE\sql_svc has ownership of C:\Documents and Settings\sql_svc\Start Menu\Programs\Startup
+Identity ARCHETYPE\sql_svc has 'FullControl' perms for C:\Documents and Settings\sql_svc\Start Menu\Programs\Startup
+ARCHETYPE\sql_svc has ownership of C:\Documents and Settings\sql_svc\Start Menu\Programs\Startup\desktop.ini
+Identity ARCHETYPE\sql_svc has 'FullControl' perms for C:\Documents and Settings\sql_svc\Start Menu\Programs\Startup\desktop.ini
+Identity BUILTIN\Users BUILTIN\Users has 'Write' perms for C:\ProgramData
+Identity BUILTIN\Users BUILTIN\Users has 'Write' perms for C:\ProgramData
+ARCHETYPE\sql_svc has ownership of C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+Identity ARCHETYPE\sql_svc has 'FullControl' perms for C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+ARCHETYPE\sql_svc has ownership of C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\desktop.ini
+Identity ARCHETYPE\sql_svc has 'FullControl' perms for C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\desktop.ini
+
+=========|| STARTUP APPS Registry Check
+
+=========|| INSTALLED APPLICATIONS
+Generating list of installed applications
+VMware Tools : 11.2.5.17337674
+SQL Server 2017 Shared Management Objects Extensions : 14.0.1000.169
+SQL Server 2017 Common Files : 14.0.1000.169
+SQL Server 2017 Batch Parser : 14.0.1000.169
+SQL Server 2017 Shared Management Objects Extensions : 14.0.1000.169
+SQL Server 2017 DMF : 14.0.1000.169
+Microsoft SQL Server 2017 T-SQL Language Service  : 14.0.1000.169
+SQL Server 2017 Shared Management Objects : 14.0.1000.169
+SQL Server 2017 Database Engine Shared : 14.0.1000.169
+Microsoft Visual C++ 2019 X64 Minimum Runtime - 14.27.29016 : 14.27.29016
+Microsoft ODBC Driver 13 for SQL Server : 14.0.1000.169
+Microsoft Visual C++ 2019 X64 Additional Runtime - 14.27.29016 : 14.27.29016
+SQL Server 2017 Connection Info : 14.0.1000.169
+SQL Server 2017 SQL Diagnostics : 14.0.1000.169
+Browser for SQL Server 2017 : 14.0.1000.169
+Microsoft Visual C++ 2019 X86 Additional Runtime - 14.27.29016 : 14.27.29016
+SQL Server 2017 Common Files : 14.0.1000.169
+Microsoft VSS Writer for SQL Server 2017 : 14.0.1000.169
+SQL Server 2017 Shared Management Objects : 14.0.1000.169
+SQL Server 2017 Database Engine Services : 14.0.1000.169
+SQL Server 2017 Database Engine Services : 14.0.1000.169
+SQL Server 2017 XEvent : 14.0.1000.169
+Microsoft SQL Server 2017 Setup (English) : 14.0.1000.169
+SQL Server 2017 XEvent : 14.0.1000.169
+Microsoft Visual C++ 2019 X86 Minimum Runtime - 14.27.29016 : 14.27.29016
+SQL Server 2017 Database Engine Shared : 14.0.1000.169
+SQL Server 2017 Connection Info : 14.0.1000.169
+Microsoft SQL Server 2017 RsFx Driver : 14.0.1000.169
+SQL Server 2017 DMF : 14.0.1000.169
+Microsoft SQL Server 2012 Native Client  : 11.3.6540.0
+
+=========|| LOOKING FOR BASH.EXE
+C:\Windows\WinSxS\amd64_microsoft-windows-lxss-bash.resources_31bf3856ad364e35_10.0.17763.1_en-us_a373353a4b22f4ac\bash.exe.mui
+C:\Windows\WinSxS\amd64_microsoft-windows-lxss-bash_31bf3856ad364e35_10.0.17763.1075_none_8d4f61fe8e43d555\bash.exe C:\Windows\WinSxS\amd64_microsoft-windows-lxss-bash_31bf3856ad364e35_10.0.17763.1075_none_8d4f61fe8e43d555\f\bash.exe C:\Windows\WinSxS\amd64_microsoft-windows-lxss-bash_31bf3856ad364e35_10.0.17763.1075_none_8d4f61fe8e43d555\r\bash.exe
+C:\Windows\WinSxS\amd64_microsoft-windows-lxss-bash_31bf3856ad364e35_10.0.17763.1_none_3061487514bb83f7\bash.exe
+
+
+
+=========|| LOOKING FOR SCCM CLIENT
+Not Installed.
+
+=========|| NETWORK INFORMATION
+
+=========|| HOSTS FILE
+Get content of etc\hosts file
+
+=========|| IP INFORMATION
+
+=========|| Ipconfig ALL
+
+Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : Archetype
+   Primary Dns Suffix  . . . . . . . :
+   Node Type . . . . . . . . . . . . : Hybrid
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+   DNS Suffix Search List. . . . . . : .htb
+
+Ethernet adapter Ethernet0 2:
+
+   Connection-specific DNS Suffix  . : .htb
+   Description . . . . . . . . . . . : vmxnet3 Ethernet Adapter
+   Physical Address. . . . . . . . . : 00-50-56-B0-A0-62
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   IPv6 Address. . . . . . . . . . . : dead:beef::3045:162e:3468:dee6(Preferred)
+   Link-local IPv6 Address . . . . . : fe80::3045:162e:3468:dee6%7(Preferred)
+   IPv4 Address. . . . . . . . . . . : 10.129.250.121(Preferred)
+   Subnet Mask . . . . . . . . . . . : 255.255.0.0
+   Lease Obtained. . . . . . . . . . : Saturday, September 28, 2024 4:15:14 AM
+   Lease Expires . . . . . . . . . . : Saturday, September 28, 2024 6:45:14 AM
+   Default Gateway . . . . . . . . . : fe80::250:56ff:feb9:8633%7
+                                       10.129.0.1
+   DHCP Server . . . . . . . . . . . : 10.129.0.1
+   DHCPv6 IAID . . . . . . . . . . . : 117461078
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-25-B7-03-7E-00-50-56-B4-42-14
+   DNS Servers . . . . . . . . . . . : 1.1.1.1
+                                       1.0.0.1
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+
+=========|| DNS Cache
+
+=========|| LISTENING PORTS
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State           PID
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING       844
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:1433           0.0.0.0:0              LISTENING       1772
+  TCP    0.0.0.0:5985           0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:47001          0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:49664          0.0.0.0:0              LISTENING       468
+  TCP    0.0.0.0:49665          0.0.0.0:0              LISTENING       948
+  TCP    0.0.0.0:49666          0.0.0.0:0              LISTENING       992
+  TCP    0.0.0.0:49667          0.0.0.0:0              LISTENING       1296
+  TCP    0.0.0.0:49668          0.0.0.0:0              LISTENING       604
+  TCP    0.0.0.0:49669          0.0.0.0:0              LISTENING       616
+  TCP    10.129.250.121:139     0.0.0.0:0              LISTENING       4
+  TCP    10.129.250.121:1433    10.10.14.142:33930     ESTABLISHED     1772
+  TCP    10.129.250.121:49699   10.10.14.142:443       ESTABLISHED     1584
+  TCP    127.0.0.1:1434         0.0.0.0:0              LISTENING       1772
+  TCP    [::]:135               [::]:0                 LISTENING       844
+  TCP    [::]:445               [::]:0                 LISTENING       4
+  TCP    [::]:1433              [::]:0                 LISTENING       1772
+  TCP    [::]:5985              [::]:0                 LISTENING       4
+  TCP    [::]:47001             [::]:0                 LISTENING       4
+  TCP    [::]:49664             [::]:0                 LISTENING       468
+  TCP    [::]:49665             [::]:0                 LISTENING       948
+  TCP    [::]:49666             [::]:0                 LISTENING       992
+  TCP    [::]:49667             [::]:0                 LISTENING       1296
+  TCP    [::]:49668             [::]:0                 LISTENING       604
+  TCP    [::]:49669             [::]:0                 LISTENING       616
+  TCP    [::1]:1434             [::]:0                 LISTENING       1772
+  UDP    0.0.0.0:123            *:*                                    1320
+  UDP    0.0.0.0:500            *:*                                    992
+  UDP    0.0.0.0:4500           *:*                                    992
+  UDP    0.0.0.0:5353           *:*                                    388
+  UDP    0.0.0.0:5355           *:*                                    388
+  UDP    10.129.250.121:137     *:*                                    4
+  UDP    10.129.250.121:138     *:*                                    4
+  UDP    127.0.0.1:53620        *:*                                    992
+  UDP    [::]:123               *:*                                    1320
+  UDP    [::]:500               *:*                                    992
+  UDP    [::]:4500              *:*                                    992
+  UDP    [::]:5353              *:*                                    388
+  UDP    [::]:5355              *:*                                    388
+
+=========|| ARP Table
+
+Interface: 10.129.250.121 --- 0x7
+  Internet Address      Physical Address      Type
+  10.129.0.1            00-50-56-b9-86-33     dynamic
+  10.129.95.187         00-50-56-b0-b4-66     dynamic
+  10.129.128.59         00-50-56-b0-d9-1e     dynamic
+  10.129.155.54         00-50-56-b0-e7-64     dynamic
+  10.129.190.120        00-50-56-b0-b5-c2     dynamic
+  10.129.245.222        00-50-56-b0-ed-8d     dynamic
+  10.129.255.255        ff-ff-ff-ff-ff-ff     static
+  169.254.216.124       00-50-56-b0-b5-c2     dynamic
+  169.254.241.250       00-50-56-b0-ed-8d     dynamic
+  224.0.0.22            01-00-5e-00-00-16     static
+  224.0.0.251           01-00-5e-00-00-fb     static
+  224.0.0.252           01-00-5e-00-00-fc     static
+  255.255.255.255       ff-ff-ff-ff-ff-ff     static
+
+=========|| Routes
+===========================================================================
+Interface List
+  7...00 50 56 b0 a0 62 ......vmxnet3 Ethernet Adapter
+  1...........................Software Loopback Interface 1
+===========================================================================
+
+IPv4 Route Table
+===========================================================================
+Active Routes:
+Network Destination        Netmask          Gateway       Interface  Metric
+          0.0.0.0          0.0.0.0       10.129.0.1   10.129.250.121     15
+       10.129.0.0      255.255.0.0         On-link    10.129.250.121    271
+   10.129.250.121  255.255.255.255         On-link    10.129.250.121    271
+   10.129.255.255  255.255.255.255         On-link    10.129.250.121    271
+        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
+        224.0.0.0        240.0.0.0         On-link    10.129.250.121    271
+  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+  255.255.255.255  255.255.255.255         On-link    10.129.250.121    271
+===========================================================================
+Persistent Routes:
+  Network Address          Netmask  Gateway Address  Metric
+          0.0.0.0          0.0.0.0       10.10.10.2  Default
+===========================================================================
+
+IPv6 Route Table
+===========================================================================
+Active Routes:
+ If Metric Network Destination      Gateway
+  7    271 ::/0                     fe80::250:56ff:feb9:8633
+  1    331 ::1/128                  On-link
+  7    271 dead:beef::/64           On-link
+  7    271 dead:beef::3045:162e:3468:dee6/128
+                                    On-link
+  7    271 fe80::/64                On-link
+  7    271 fe80::3045:162e:3468:dee6/128
+                                    On-link
+  1    331 ff00::/8                 On-link
+  7    271 ff00::/8                 On-link
+===========================================================================
+Persistent Routes:
+  None
+
+=========|| Network Adapter info
+----------
+Ethernet0 2
+vmxnet3 Ethernet Adapter
+7
+Up
+00-50-56-B0-A0-62
+----------
+
+=========|| Checking for WiFi passwords
+
+=========|| Enabled firewall rules - displaying command only - it can overwrite the display buffer
+=========|| show all rules with: netsh advfirewall firewall show rule dir=in name=all
+
+=========|| SMB SHARES
+Will enumerate SMB Shares and Access if any are available
+Everyone has Read to backups
+
+=========|| USER INFO
+== || Generating List of all Administrators, Users and Backup Operators (if any exist)
+ADMINISTRATORS
+-------
+Alias name     ADMINISTRATORS
+Comment        Administrators have complete and unrestricted access to the computer/domain
+
+Members
+
+-------------------------------------------------------------------------------
+Administrator
+The command completed successfully.
+
+USERS
+-------
+Alias name     USERS
+Comment        Users are prevented from making accidental or intentional system-wide changes and can run most applications
+
+Members
+
+-------------------------------------------------------------------------------
+NT AUTHORITY\Authenticated Users
+NT AUTHORITY\INTERACTIVE
+sql_svc
+The command completed successfully.
+
+BACKUP OPERATORS
+-------
+Alias name     Backup Operators
+Comment        Backup Operators can override security restrictions for the sole purpose of backing up or restoring files
+
+Members
+
+-------------------------------------------------------------------------------
+The command completed successfully.
+
+
+=========|| USER DIRECTORY ACCESS CHECK
+Read Access to C:\Users\Public
+Read Access to C:\Users\sql_svc
+
+=========|| WHOAMI INFO
+
+=========|| Check if you are inside the Administrators group or if you have enabled any token that can be use to escalate privileges like SeImpersonatePrivilege, SeAssignPrimaryPrivilege, SeTcbPrivilege, SeBackupPrivilege, SeRestorePrivilege, SeCreateTokenPrivilege, SeLoadDriverPrivilege, SeTakeOwnershipPrivilege, SeDebbugPrivilege
+https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#users-and-groups
+
+USER INFORMATION
+----------------
+
+User Name         SID
+================= =============================================
+archetype\sql_svc S-1-5-21-1479773013-2644727484-962428355-1001
+
+
+GROUP INFORMATION
+-----------------
+
+Group Name                           Type             SID                                                             Attributes
+==================================== ================ =============================================================== ==================================================
+Everyone                             Well-known group S-1-1-0                                                         Mandatory group, Enabled by default, Enabled group
+BUILTIN\Users                        Alias            S-1-5-32-545                                                    Mandatory group, Enabled by default, Enabled group
+BUILTIN\Performance Monitor Users    Alias            S-1-5-32-558                                                    Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\SERVICE                 Well-known group S-1-5-6                                                         Mandatory group, Enabled by default, Enabled group
+CONSOLE LOGON                        Well-known group S-1-2-1                                                         Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Authenticated Users     Well-known group S-1-5-11                                                        Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\This Organization       Well-known group S-1-5-15                                                        Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\Local account           Well-known group S-1-5-113                                                       Mandatory group, Enabled by default, Enabled group
+NT SERVICE\MSSQLSERVER               Well-known group S-1-5-80-3880718306-3832830129-1677859214-2598158968-1052248003 Enabled by default, Enabled group, Group owner
+LOCAL                                Well-known group S-1-2-0                                                         Mandatory group, Enabled by default, Enabled group
+NT AUTHORITY\NTLM Authentication     Well-known group S-1-5-64-10                                                     Mandatory group, Enabled by default, Enabled group
+Mandatory Label\High Mandatory Level Label            S-1-16-12288                             
+
+
+PRIVILEGES INFORMATION
+----------------------
+
+Privilege Name                Description                               State
+============================= ========================================= ========
+SeAssignPrimaryTokenPrivilege Replace a process level token             Disabled
+SeIncreaseQuotaPrivilege      Adjust memory quotas for a process        Disabled
+SeChangeNotifyPrivilege       Bypass traverse checking                  Enabled
+SeImpersonatePrivilege        Impersonate a client after authentication Enabled
+SeCreateGlobalPrivilege       Create global objects                     Enabled
+SeIncreaseWorkingSetPrivilege Increase a process working set            Disabled
+
+
+=========|| Cloud Credentials Check
+
+=========|| APPcmd Check
+
+=========|| OpenVPN Credentials Check
+
+=========|| PowerShell History (Password Search Only)
+=|| PowerShell Console History
+=|| To see all history, run this command: Get-Content (Get-PSReadlineOption).HistorySavePath
+
+=|| AppData PSReadline Console History
+=|| To see all history, run this command: Get-Content C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+
+=|| PowesRhell default transrcipt history check
+
+=========|| ENVIRONMENT VARIABLES
+Maybe you can take advantage of modifying/creating a binary in some of the following locations
+PATH variable entries permissions - place binary or DLL to execute instead of legitimate
+https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#dll-hijacking
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows
+
+
+Name          Property
+----          --------
+WindowsUpdate
+Check if you can modify any binary that is going to be executed by admin or if you can impersonate a not found binary
+Get-Item : Cannot find path 'HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce' because it does not exist.
+At C:\Users\sql_svc\Downloads\winPEAS.ps1:1098 char:4
++   (Get-Item $_) | ForEach-Object {
++    ~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (HKCU\Software\M...Version\RunOnce:String) [Get-Item], ItemNotFoundExcep
+   tion
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetItemCommand
+
+# Copyright (c) 1993-2009 Microsoft Corp.
+#
+# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+#
+# This file contains the mappings of IP addresses to host names. Each
+# entry should be kept on an individual line. The IP address should
+# be placed in the first column followed by the corresponding host name.
+# The IP address and the host name should be separated by at least one
+# space.
+#
+# Additionally, comments (such as these) may be inserted on individual
+# lines or following the machine name denoted by a '#' symbol.
+#
+# For example:
+#
+#      102.54.94.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#       127.0.0.1       localhost
+#       ::1             localhost
+Method invocation failed because [System.Boolean] does not contain a method named 'Replace'.
+At C:\Users\sql_svc\Downloads\winPEAS.ps1:1210 char:1
++ ((netsh.exe wlan show profiles) -match '\s{2,}:\s').replace("    All  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : MethodNotFound
+
+Write-Host : Cannot bind parameter because parameter 'ForegroundColor' is specified more than once. To provide
+multiple values to parameters that can accept multiple values, use the array syntax. For example, "-parameter
+value1,value2,value3".
+At C:\Users\sql_svc\Downloads\winPEAS.ps1:1267 char:190
++ ... calation/privilege-escalation-abusing-tokens" -ForegroundColor yellow
++                                                   ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Write-Host], ParameterBindingException
+    + FullyQualifiedErrorId : ParameterAlreadyBound,Microsoft.PowerShell.Commands.WriteHostCommand
+
+
+
+
+Name                    Value                                                                  
+----                    -----                                                                  
+ALLUSERSPROFILE         C:\ProgramData                                                         
+APPDATA                 C:\Users\sql_svc\AppData\Roaming                                       
+CommonProgramFiles      C:\Program Files\Common Files                                          
+CommonProgramFiles(x86) C:\Program Files (x86)\Common Files                                    
+CommonProgramW6432      C:\Program Files\Common Files                                          
+COMPLUS_MDA             InvalidVariant;RaceOnRCWCleanup;InvalidFunctionPointerInDelegate;InvalidMemberDeclaration;Relea
+                        seHandleFailed;MarshalCleanupError;ReportAvOnComRelease;DangerousThreadingAPI;invalidOverlapped
+                        ToPinvoke                                                              
+COMPUTERNAME            ARCHETYPE                                                              
+ComSpec                 C:\Windows\system32\cmd.exe                                            
+DriverData              C:\Windows\System32\Drivers\DriverData                                 
+LOCALAPPDATA            C:\Users\sql_svc\AppData\Local                                         
+NUMBER_OF_PROCESSORS    2                                                                      
+OS                      Windows_NT                                                             
+Path                    C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v
+                        1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\Client
+                        SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL          
+                        Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program
+                        Files\Microsoft SQL Server\140\DTS\Binn\;C:\Users\sql_svc\AppData\Local\Microsoft\WindowsApps
+PATHEXT                 .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL             
+PROCESSOR_ARCHITECTURE  AMD64                                                                  
+PROCESSOR_IDENTIFIER    AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD                       
+PROCESSOR_LEVEL         25                                                                     
+PROCESSOR_REVISION      0101                                                                   
+ProgramData             C:\ProgramData                                                         
+ProgramFiles            C:\Program Files                                                       
+ProgramFiles(x86)       C:\Program Files (x86)                                                 
+ProgramW6432            C:\Program Files                                                       
+PROMPT                  $P$G                                                                   
+PSModulePath            C:\Users\sql_svc\Documents\WindowsPowerShell\Modules;C:\Program        
+                        Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules;C:\Program
+                        Files (x86)\Microsoft SQL Server\140\Tools\PowerShell\Modules\         
+PUBLIC                  C:\Users\Public                                                        
+SystemDrive             C:                                                                     
+SystemRoot              C:\Windows                                                             
+TEMP                    C:\Users\sql_svc\AppData\Local\Temp                                    
+TMP                     C:\Users\sql_svc\AppData\Local\Temp                                    
+USERDOMAIN              ARCHETYPE                                                              
+USERNAME                sql_svc                                                                
+USERPROFILE             C:\Users\sql_svc                                                       
+windir                  C:\Windows                                                             
+
+
+
+=========|| Sticky Notes Check
+
+=========|| Cached Credentials Check
+https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#windows-vault
+
+Currently stored credentials:
+
+* NONE *
+
+=========|| Checking for DPAPI RPC Master Keys
+Use the Mimikatz 'dpapi::masterkey' module with appropriate arguments (/rpc) to decrypt
+https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#dpapi
+found: C:\Users\sql_svc\AppData\Roaming\Microsoft\\Protect\
+C:\Users\sql_svc\AppData\Roaming\Microsoft\Protect\S-1-5-21-1479773013-2644727484-962428355-1001
+C:\Users\sql_svc\AppData\Roaming\Microsoft\Protect\CREDHIST
+
+=========|| Checking for DPAPI Cred Master Keys
+Use the Mimikatz 'dpapi::cred' module with appropriate /masterkey to decrypt
+You can also extract many DPAPI masterkeys from memory with the Mimikatz 'sekurlsa::dpapi' module
+https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#dpapi
+
+=========|| Current Logged on Users
+No User exists for *
+
+=========|| Remote Sessions
+No session exists for *
+
+=========|| Kerberos tickets (does require admin to interact)
+
+Current LogonId is 0:0x13597
+
+Cached Tickets: (0)
+
+=========|| Printing ClipBoard (if any)
+
+=========|| Unattended Files Check
+
+=========|| SAM / SYSTEM Backup Checks
+
+=========|| Group Policy Password Check
+
+=========|| Recycle Bin TIP:
+if credentials are found in the recycle bin, tool from nirsoft may assist: http://www.nirsoft.net/password_recovery_tools.html
+
+=========||  Password Check in Files/Folders
+=========|| Password Check. Starting at root of each drive. This will take some time. Like, grab a coffee or tea kinda time.
+=========|| Looking through each drive, searching for *.xml *.txt *.conf *.config *.cfg *.ini .y*ml *.log *.bak *.xls *.xlsx *.xlsm
+C:\Users\All Users\Microsoft\Event Viewer\Views\ServerRoles\RemoteDesktop.Events.xml contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\Microsoft\ServerManager\Events\FileServer.Events.xml contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\Microsoft\Windows\Start Menu\Programs\Accessories\desktop.ini contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\Microsoft\Windows\Start Menu\Programs\Administrative Tools\desktop.ini contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\Microsoft\Windows\Start Menu\Programs\StartUp\desktop.ini contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\Microsoft\Windows\Start Menu\Programs\System Tools\desktop.ini contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\Microsoft\Windows\Start Menu\Programs\desktop.ini contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\Microsoft\Windows\Start Menu\desktop.ini contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\Microsoft\Windows Defender\Platform\4.18.1911.3-0\ThirdPartyNotices.txt contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\Microsoft\Windows Defender\Platform\4.18.2001.10-0\ThirdPartyNotices.txt contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\Microsoft\Windows Defender\Platform\4.18.2106.6-0\ThirdPartyNotices.txt contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\VMware\VMware Tools\Unity Filters\adobeflashcs3.txt contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\VMware\VMware Tools\Unity Filters\adobephotoshopcs3.txt contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\VMware\VMware Tools\Unity Filters\googledesktop.txt contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\VMware\VMware Tools\Unity Filters\microsoftoffice.txt contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\VMware\VMware Tools\Unity Filters\vistasidebar.txt contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\VMware\VMware Tools\Unity Filters\visualstudio2005.txt contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\VMware\VMware Tools\Unity Filters\vmwarefilters.txt contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\VMware\VMware Tools\Unity Filters\win7gadgets.txt contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\VMware\VMware Tools\manifest.txt contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\VMware\VMware VGAuth\backup\vgauth.conf contains the word 'user' -excluding the 'users' directory
+C:\Users\All Users\VMware\VMware VGAuth\vgauth.conf contains the word 'user' -excluding the 'users' directory
+Possible Password found: Usernames2
+C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+Usernames2 triggered
+> net.exe use T: \\Archetype\backups /user:administrator MEGACORP_4dm1n!!
+  exit
+C:\Users\sql_svc\Desktop\user.txt contains the word 'user' -excluding the 'users' directory
+C:\Users\sql_svc\ntuser.ini contains the word 'user' -excluding the 'users' directory
+C:\Windows\debug\PASSWD.LOG contains the word 'pass'
+C:\Windows\servicing\LCU\Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.2061.1.7\amd64_microsoft-windows-appx-alluserstore_31bf3856ad364e35_10.0.17763.2061_none_7189c9e1c9a65b31\f\appxprovisioning.xml contains the word 'user' -excluding the 'users' directory
+C:\Windows\servicing\LCU\Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.2061.1.7\amd64_microsoft-windows-appx-alluserstore_31bf3856ad364e35_10.0.17763.2061_none_7189c9e1c9a65b31\r\appxprovisioning.xml contains the word 'user' -excluding the 'users' directory
+C:\Windows\servicing\LCU\Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.2061.1.7\amd64_microsoft-windows-hvsi-manager-shared_31bf3856ad364e35_10.0.17763.1911_none_519e3156a5f6123f\f\hvsiuserpolicies_containercreate.xml contains the word 'user' -excluding the 'users' directory
+C:\Windows\servicing\LCU\Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.2061.1.7\amd64_microsoft-windows-hvsi-manager-shared_31bf3856ad364e35_10.0.17763.1911_none_519e3156a5f6123f\f\hvsiuserpolicies_containerrealtime.xml contains the word 'user' -excluding the 'users' directory
+C:\Windows\servicing\LCU\Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.2061.1.7\amd64_microsoft-windows-hvsi-manager-shared_31bf3856ad364e35_10.0.17763.1911_none_519e3156a5f6123f\r\hvsiuserpolicies_containercreate.xml contains the word 'user' -excluding the 'users' directory
+C:\Windows\servicing\LCU\Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.2061.1.7\amd64_microsoft-windows-hvsi-manager-shared_31bf3856ad364e35_10.0.17763.1911_none_519e3156a5f6123f\r\hvsiuserpolicies_containerrealtime.xml contains the word 'user' -excluding the 'users' directory
+C:\Windows\servicing\LCU\Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.2061.1.7\amd64_tsportalwebpart_31bf3856ad364e35_10.0.17763.1697_none_820ae910c17bf649\f\allusers_tswa.log contains the word 'user' -excluding the 'users' directory
+C:\Windows\servicing\LCU\Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.2061.1.7\amd64_tsportalwebpart_31bf3856ad364e35_10.0.17763.1697_none_820ae910c17bf649\r\allusers_tswa.log contains the word 'user' -excluding the 'users' directory
+C:\Windows\servicing\LCU\Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.2061.1.7\wow64_microsoft-windows-appx-alluserstore_31bf3856ad364e35_10.0.17763.2061_none_7bde7433fe071d2c\f\appxprovisioning.xml contains the word 'user' -excluding the 'users' directory
+C:\Windows\servicing\LCU\Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.2061.1.7\wow64_microsoft-windows-appx-alluserstore_31bf3856ad364e35_10.0.17763.2061_none_7bde7433fe071d2c\r\appxprovisioning.xml contains the word 'user' -excluding the 'users' directory
+C:\Windows\System32\DriverStore\FileRepository\prnms007.inf_amd64_2a93bb44e5f890b8\Amd64\MSPassthrough-pipelineconfig.xml contains the word 'pass'
+C:\Windows\WinSxS\amd64_dual_prnms007.inf_31bf3856ad364e35_10.0.17763.1_none_aba3a4867e262df7\Amd64\MSPassthrough-pipelineconfig.xml contains the word 'pass'
+C:\Windows\WinSxS\amd64_microsoft-windows-appx-alluserstore_31bf3856ad364e35_10.0.17763.1_none_149c539c501d8c87\AppxProvisioning.xml contains the word 'user' -excluding the 'users' directory
+C:\Windows\WinSxS\amd64_microsoft-windows-appx-alluserstore_31bf3856ad364e35_10.0.17763.2061_none_7189c9e1c9a65b31\AppxProvisioning.xml contains the word 'user' -excluding the 'users' directory
+C:\Windows\WinSxS\amd64_microsoft-windows-s..l32-kf-userprofiles_31bf3856ad364e35_10.0.17763.1_none_74abad687fc2f16d\desktop.ini contains the word 'user' -excluding the 'users' directory
+C:\Windows\WinSxS\wow64_microsoft-windows-appx-alluserstore_31bf3856ad364e35_10.0.17763.1_none_1ef0fdee847e4e82\AppxProvisioning.xml contains the word 'user' -excluding the 'users' directory
+C:\Windows\WinSxS\wow64_microsoft-windows-appx-alluserstore_31bf3856ad364e35_10.0.17763.2061_none_7bde7433fe071d2c\AppxProvisioning.xml contains the word 'user' -excluding the 'users' directory
+=========|| Registry Password Check
+This will take some time. Won't you have a pepsi?
+Finished registry::\HKEY_CURRENT_USER\
