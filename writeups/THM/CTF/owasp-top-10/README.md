@@ -1,6 +1,7 @@
 
 ---
 
+## [Severity 1] Injection
 ## [Severity 2] Broken Authentication
 
 
@@ -292,4 +293,129 @@ XSS-Payloads.com (http://www.xss-payloads.com/) is a website that has XSS relate
 
 ## [Severity 8] Insecure Deserialization
 
+- Simply, insecure deserialization is replacing data processed by an application with malicious code; allowing anything from DoS (Denial of Service) to RCE (Remote Code Execution) that the attacker can use to gain a foothold in a pentesting scenario.
+- Specifically, this malicious code leverages the legitimate serialization and deserialization process used by web applications.
 
+- Low exploitability. This vulnerability is often a case-by-case basis - there is no reliable tool/framework for it. Because of its nature, attackers need to have a good understanding of the inner-workings of the ToE.
+- The exploit is only as dangerous as the attacker's skill permits, more so, the value of the data that is exposed. For example, someone who can only cause a DoS will make the application unavailable. The business impact of this will vary on the infrastructure - some organisations will recover just fine, others, however, will not.
+
+**What's Vulnerable?**
+
+At summary, ultimately, any application that stores or fetches data where there are no validations or integrity checks in place for the data queried or retained. A few examples of applications of this nature are:
+
+- E-Commerce Sites  
+- Forums  
+- API's  
+- Application Runtimes (Tomcat, Jenkins, Jboss, etc)
+
+﻿**Objects**
+
+A prominent element of object-oriented programming (OOP), objects are made up of two things:
+
+- State
+- Behaviour
+
+Simply, objects allow you to create similar lines of code without having to do the leg-work of writing the same lines of code again.
+
+For example, a lamp would be a good object. Lamps can have different types of bulbs, this would be their state, as well as being either on/off - their behaviour!
+Rather than having to accommodate every type of bulb and whether or not that specific lamp is on or off, you can use methods to simply alter the state and behaviour of the lamp.
+
+**De(Serialization)**
+
+_Learning is best done through analogies_
+
+A Tourist approaches you in the street asking for directions. They're looking for a local landmark and got lost. Unfortunately, English isn't their strong point and nor do you speak their dialect either. What do you do? You draw a map of the route to the landmark because pictures cross language barriers, they were able to find the landmark. Nice! You've just serialised some information, where the tourist then deserialised it to find the landmark.
+
+**Continued**
+
+Serialisation is the process of converting objects used in programming into simpler, compatible formatting for transmitting between systems or networks for further processing or storage.
+
+Alternatively, deserialisation is the reverse of this; converting serialised information into their complex form - an object that the application will understand.
+
+**What does this mean?**
+
+Say you have a password of "password123" from a program that needs to be stored in a database on another system. To travel across a network this string/output needs to be converted to binary. Of course, the password needs to be stored as "password123" and not its binary notation. Once this reaches the database, it is converted or deserialised back into "password123" so it can be stored.
+
+_The process is best explained through diagrams:_
+
+![](https://i.imgur.com/ZB76mLI.png)  
+
+**How can we leverage this?**
+
+Simply, insecure deserialization occurs when data from an untrusted party (I.e. a hacker) gets executed because there is no filtering or input validation; the system assumes that the data is trustworthy and will execute it no holds barred.
+
+**Cookies 101**
+
+Ah yes, the origin of many memes. Cookies are an essential tool for modern websites to function. Tiny pieces of data, these are created by a website and stored on the user's computer. 
+
+![](https://i.imgur.com/phg51EI.png)
+
+You'll see notifications like the above on most websites these days. Websites use these cookies to store user-specific behaviours like items in their shopping cart or session IDs.
+
+In the web application, we're going to exploit, you'll notice cookies store login information like the below! Yikes!
+
+  
+
+![](https://i.imgur.com/QhR7aOX.png)
+
+Whilst plaintext credentials is a vulnerability in itself, it is not insecure deserialization as we have not sent any serialized data to be executed!
+
+Cookies are not permanent storage solutions like databases. Some cookies such as session ID's will clear when the browser is closed, others, however, last considerably longer. This is determined by the "Expiry" timer that is set when the cookie is created.
+
+_Some cookies have additional attributes, a small list of these are below:_
+
+| Attribute    | Description                                                             | Required? |
+| ------------ | ----------------------------------------------------------------------- | --------- |
+| Cookie Name  | The Name of the Cookie to be set                                        | Yes       |
+| Cookie Value | Value, this can be anything plaintext or encoded                        | Yes       |
+| Secure Only  | If set, this cookie will only be set over HTTPS connections             | No        |
+| Expiry       | Set a timestamp where the cookie will be removed from the browser       | No        |
+| Path         | The cookie will only be sent if the specified URL is within the request | No        |
+
+﻿**Creating Cookies**
+
+Cookies can be set in various website programming languages. For example, Javascript, PHP or Python to name a few. The following web application is developed using Python's Flask, so it is fitting to use it as an example.
+
+_Take the snippet below:_
+
+![](https://i.imgur.com/9WOYwbF.png)  
+
+Setting cookies in Flask is rather trivial. Simply, this snippet gets the current date and time, stores it within the variable "timestamp" and then stores the date and time in a cookie named "registrationTimestamp". This is what it will look like in the browser.
+
+![](https://i.imgur.com/I4oUGsn.png)  
+
+_It's as simple as that._
+
+Reference : `pickle` — Python object serialization
+
+---
+
+## [Severity 9] Components With Known Vulnerabilities
+
+---
+
+## [Severity 10] Insufficient Logging and Monitoring
+
+When web applications are set up, every action performed by the user should be logged. Logging is important because in the event of an incident, the attackers actions can be traced. Once their actions are traced, their risk and impact can be determined. Without logging, there would be no way to tell what actions an attacker performed if they gain access to particular web applications. The bigger impacts of these include:
+
+- regulatory damage: if an attacker has gained access to personally identifiable user information and there is no record of this, not only are users of the application affected, but the application owners may be subject to fines or more severe actions depending on regulations.
+- risk of further attacks: without logging, the presence of an attacker may be undetected. This could allow an attacker to launch further attacks against web application owners by stealing credentials, attacking infrastructure and more.
+
+The information stored in logs should include:
+
+- HTTP status codes
+- Time Stamps
+- Usernames
+- API endpoints/page locations
+- IP addresses
+
+These logs do have some sensitive information on them so its important to ensure that logs are stored securely and multiple copies of these logs are stored at different locations.
+
+As you may have noticed, logging is more important after a breach or incident has occurred. The ideal case is having monitoring in place to detect any suspicious activity. The aim of detecting this suspicious activity is to either stop the attacker completely or reduce the impact they've made if their presence has been detected much later than anticipated. Common examples of suspicious activity includes:
+
+- multiple unauthorised attempts for a particular action (usually authentication attempts or access to unauthorised resources e.g. admin pages)
+- requests from anomalous IP addresses or locations: while this can indicate that someone else is trying to access a particular user's account, it can also have a false positive rate.
+- use of automated tools: particular automated tooling can be easily identifiable e.g. using the value of User-Agent headers or the speed of requests. This can indicate an attacker is using automated tooling.
+- common payloads: in web applications, it's common for attackers to use Cross Site Scripting (XSS) payloads. Detecting the use of these payloads can indicate the presence of someone conducting unauthorised/malicious testing on applications.
+
+Just detecting suspicious activity isn't helpful. This suspicious activity needs to be rated according to the impact level. For example, certain actions will higher impact than others. These higher impact actions need to be responded to sooner thus they should raise an alarm which raises the attention of the relevant party.
